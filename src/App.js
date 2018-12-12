@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map';
 import FourSquareAPI from "./FourSquareAPI";
+import SearchArea from './components/SearchArea';
 
 class App extends Component {
   
   state ={
     venues: [],
-    markers: []
+    markers: [],
+    onUpdatedata: object => {
+      this.setState({object});
+    }
   }
 
   componentDidMount(){
@@ -58,10 +62,17 @@ class App extends Component {
       this.setState({ venues: Object.assign(this.state.venues,updatedVenue) });
     });
   };
-  
+
+  //function to handles click on items and followed by displaying infowindow on click
+  itemOnClick = venue => {
+    const marker = this.state.markers.find(marker => marker.id === venue.id);
+    this.markerOnClick(marker);
+  };
+
   render() {
     return (
       <div className="App">
+        <SearchArea {...this.state} itemOnClick={this.itemOnClick}/>
         <Map venues={this.state.venues} markers={this.state.markers} markerOnClick={this.markerOnClick}/>
       </div>
     );

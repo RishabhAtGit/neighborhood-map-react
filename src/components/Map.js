@@ -13,7 +13,7 @@ const MapRenderingComponent = withScriptjs(withGoogleMap((props) =>
                 {marker.isOpen  && (
                     <InfoWindow>
                         <div>    
-                            <p>{venueDetail.name}</p>
+                            <p>{venueDetail.name.toUpperCase()}</p>
                             <p>Latitude: {venueDetail.location.lat}</p>
                             <p>Longitude: {venueDetail.location.lng}</p>
                         </div>
@@ -31,7 +31,7 @@ class Map extends Component {
                 {...this.props}
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDvjTy2Hva-KrhH-Vqeu6s3arpuckvVlWk"
                 loadingElement={<div style={{ height:`100%`}}/>}
-                containerElement={<div style={{ height:`700px`}}/>}
+                containerElement={<div style={{ width:`80%`,height:`100%`}}/>}
                 mapElement={<div style={{height: `100%`}}/>} />
         )
     }
