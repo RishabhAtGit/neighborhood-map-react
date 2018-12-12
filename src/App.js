@@ -14,7 +14,7 @@ class App extends Component {
     let self = this;
     FourSquareAPI.searchData({
       near: "Bhopal, Madhya Pradesh",
-      query:"park",
+      query:"college",
       limit:8
     }).then(venuesData => {
         //console.log(venuesData.response);
@@ -51,6 +51,12 @@ class App extends Component {
     this.closingAllMarkers();
     marker.isOpen =true;
     this.setState({markers: Object.assign(this.state.markers, marker) });
+    const clickedVenue = this.state.venues.find(venue => venue.id === marker.id);
+    // getting venues details for infowindow
+    FourSquareAPI.getVenuesDetails(marker.id).then(responseData => {
+      const updatedVenue = Object.assign(clickedVenue, responseData.response.venue);
+      this.setState({ venues: Object.assign(this.state.venues,updatedVenue) });
+    });
   };
   
   render() {

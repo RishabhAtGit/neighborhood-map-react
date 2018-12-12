@@ -6,14 +6,21 @@ const MapRenderingComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
         defaultZoom={13}
         defaultCenter={{ lat:23.259065628051758, lng: 77.40178680419922}}>
-        {props.markers && props.markers.filter(marker => marker.isVisible === true).map((marker,index) =>(
+        {props.markers && props.markers.filter(marker => marker.isVisible === true).map((marker,index) =>{
+           const venueDetail = props.venues.find(venue => venue.id === marker.id);
+           return  (
             <Marker key= {index} position={{lat:marker.lat, lng: marker.lng}} onClick={() => props.markerOnClick(marker)}>
                 {marker.isOpen  && (
                     <InfoWindow>
-                        <p>Hi! Rishabh</p>
+                        <div>    
+                            <p>{venueDetail.name}</p>
+                            <p>Latitude: {venueDetail.location.lat}</p>
+                            <p>Longitude: {venueDetail.location.lng}</p>
+                        </div>
+                        
                     </InfoWindow>
                 )}
-            </Marker> ))}    {/* added marker for venues */}
+            </Marker> )})}    {/* added marker for venues */}
     </GoogleMap>
 ))
 
