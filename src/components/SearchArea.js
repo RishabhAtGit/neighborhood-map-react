@@ -9,6 +9,7 @@ class SearchArea extends Component {
     }
     // function to handle changes in the search field
     handleChangeOnsearchField = (event) => {
+        this.props.closeAllMarkers();
         this.setState({ query: event.target.value});
         const markers = this.props.venues.map((venue) =>{
           const result = venue.name.toUpperCase().includes(event.target.value.toUpperCase());

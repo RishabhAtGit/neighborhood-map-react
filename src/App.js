@@ -72,8 +72,8 @@ class App extends Component {
   render() {
     return (
       <div className="App" role="Application">
-        <SearchArea role="Search" {...this.state} itemOnClick={this.itemOnClick}/>
-        <Map role="Main" venues={this.state.venues} markers={this.state.markers} markerOnClick={this.markerOnClick}/>
+        <SearchArea role="Search" {...this.state} itemOnClick={this.itemOnClick} closeAllMarkers={this.closingAllMarkers}/>
+        <Map role="Main" venues={this.state.venues} closeAllMarkers={this.closingAllMarkers} markers={this.state.markers} markerOnClick={this.markerOnClick}/>
       </div>
     );
   }
