@@ -38,10 +38,25 @@ class App extends Component {
     });
   }
 
+  //closing all open markers on map whenever a marker is clicked
+  closingAllMarkers = () => {
+    const markers = this.state.markers.map(marker => {
+        marker.isOpen = false;
+        return marker;
+    });
+    this.setState({ markers:Object.assign(this.state.markers, markers) });
+  };
+   // handling clicks on marker on map
+  markerOnClick = marker => {
+    this.closingAllMarkers();
+    marker.isOpen =true;
+    this.setState({markers: Object.assign(this.state.markers, marker) });
+  };
+  
   render() {
     return (
       <div className="App">
-        <Map venues={this.state.venues} markers={this.state.markers}/>
+        <Map venues={this.state.venues} markers={this.state.markers} markerOnClick={this.markerOnClick}/>
       </div>
     );
   }
