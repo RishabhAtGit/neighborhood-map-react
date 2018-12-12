@@ -39,6 +39,8 @@ class App extends Component {
           venues:venuesDetails,
           markers: markers,
         });
+    }).catch(function(error){
+      alert(`failed to complete the request:${error}`);
     });
   }
 
@@ -60,6 +62,8 @@ class App extends Component {
     FourSquareAPI.getVenuesDetails(marker.id).then(responseData => {
       const updatedVenue = Object.assign(clickedVenue, responseData.response.venue);
       this.setState({ venues: Object.assign(this.state.venues,updatedVenue) });
+    }).catch(function(error){
+      alert(`failed to complete the request:${error}`);
     });
   };
 
