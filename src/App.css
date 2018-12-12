@@ -9,7 +9,8 @@
 /********************* styling for search area **********************************/
 
 .search-area{
-  width:25%;
+  width:30%;
+
   
 }
 
@@ -23,7 +24,6 @@
   font-size: 1.5rem;
   border-radius:10px;
   margin-top:25px;
-
 }
 
 /* 
@@ -43,7 +43,8 @@
   font-size: 1.5rem;
   border-radius:5px;
   cursor:pointer;
-  padding-top:1.5rem;
+  padding-top:0.5em;
+  padding-bottom:0.5em;
   text-align: center;
   
 }
@@ -52,7 +53,24 @@
 .venue-item:focus{
   background-color: aqua;
 }
+/*
+ * Responsive part for smaller viewport sizes
+*/
 
+@media screen and (max-width:1250px){
+  .search-area{
+    width:300px;
+    height:100px;
+    left:5;
+    top:5;
+    position:fixed;
+    z-index:1;
+  }
+  .venue-item{
+    font-size:1em;
+    height:2em;
+  }
+}
 /******************************** Styling for search area ends *********************************************/
 
 
