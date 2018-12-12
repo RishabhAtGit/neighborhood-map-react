@@ -37,6 +37,14 @@ const MapRenderingComponent = withScriptjs(withGoogleMap((props) =>
 ))
 
 class Map extends Component {
+    //checking for authentication failure before rendering the map
+    componentDidMount(){
+        window.gm_authFailure = this.gm_authFailure;
+    }
+    gm_authFailure = () => {
+        alert("Authentication Failed :(  see javascript console for technical details");
+    };
+
     render(){
         return(
             <MapRenderingComponent
