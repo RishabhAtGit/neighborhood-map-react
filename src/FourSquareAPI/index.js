@@ -24,7 +24,7 @@ class APISupport {
     static simpleDataFetch(endpoint,method, url_parameters){
         let requestData = {method, headers:APISupport.headers()};
 
-        return fetch(`https://api.foursquare.com/v2${endpoint}?client_id=YCNK34PKLXEQG1TDRMIW21DANPBGRZ5NTE55NL2HQYPUUOZR&client_secret=0A11CTI0QZA5P3IKYU14F3YHPKN4OFWG2Y2KX5XY4LQAFKT5&v=20181212&${APISupport.urlGenerator(
+        return fetch(`https://api.foursquare.com/v2${endpoint}?client_id=VAZKU2CUUP0LQEADKJCBCFHQA2GQN0AJHHRYFKK5UC5UICH4&client_secret=OZAZ01QBXC3E33TWGZ0EESEVEHNKMYIUITWOFY1WMRPVX1JU&v=20181212&${APISupport.urlGenerator(
             url_parameters
         )}`, requestData).then(response => response.json());
     }
