@@ -33,8 +33,8 @@ class SearchArea extends Component {
       };
     render(){
         return (<div className="search-area">
-            <input type="search" placeholder="Search" id="query-field" onChange={this.handleChangeOnsearchField}/>
-            <VenueList {...this.props} itemOnClick ={this.props.itemOnClick} venues={this.filterLocations()} />
+            <input type="search" role="search" tabIndex={0} placeholder="Search" id="query-field" onChange={this.handleChangeOnsearchField}/>
+            <VenueList role="list" {...this.props} itemOnClick ={this.props.itemOnClick} venues={this.filterLocations()} />
         </div>)
     }
 }
