@@ -1,3 +1,4 @@
+//imports
 import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map';
@@ -15,10 +16,11 @@ class App extends Component {
   }
 
   componentDidMount(){
+
     let self = this;
     FourSquareAPI.searchData({
-      near: "Bhopal, Madhya Pradesh",
-      query:"college",
+      near: "Bhopal, Madhya Pradesh", 
+      query:"college", // query can be : coffee, mall, shop, park, hotels, school, pizza, etc.
       limit:8
     }).then(venuesData => {
         //console.log(venuesData.response);
@@ -52,12 +54,14 @@ class App extends Component {
     });
     this.setState({ markers:Object.assign(this.state.markers, markers) });
   };
+
    // handling clicks on marker on map
   markerOnClick = marker => {
     this.closingAllMarkers();
     marker.isOpen =true;
     this.setState({markers: Object.assign(this.state.markers, marker) });
     const clickedVenue = this.state.venues.find(venue => venue.id === marker.id);
+
     // getting venues details for infowindow
     FourSquareAPI.getVenuesDetails(marker.id).then(responseData => {
       const updatedVenue = Object.assign(clickedVenue, responseData.response.venue);
@@ -72,7 +76,8 @@ class App extends Component {
     const marker = this.state.markers.find(marker => marker.id === venue.id);
     this.markerOnClick(marker);
   };
-
+ 
+  //function rendering main application page
   render() {
     return (
       <div className="App" role="Application">

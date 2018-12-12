@@ -1,8 +1,11 @@
+//imports
+
 import React, { Component } from 'react';
 import VenueList from './VenueList';
 
 class SearchArea extends Component {
-
+     
+    // state variable 
     state = {
         venues:[],
         query:''
@@ -21,7 +24,7 @@ class SearchArea extends Component {
           }
           return respectiveMarker;
         });
-        this.props.onUpdatedata({markers});
+        this.props.onUpdatedata({markers});   // updating state in parent component
     };
      // function to filter venues in venues list
       filterLocations= () => {
@@ -32,6 +35,7 @@ class SearchArea extends Component {
               return venues;
           }
       };
+      // function to render ui
     render(){
         return (<div className="search-area">
             <input type="search" role="search" tabIndex={0} placeholder="Search Data powered by FourSquareAPI " id="query-field" onChange={this.handleChangeOnsearchField}/>

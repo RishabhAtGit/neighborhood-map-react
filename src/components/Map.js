@@ -1,6 +1,12 @@
 /* global google */
+
+//imports 
+
 import React, {Component} from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+
+
+// react-google-maps refferred from :https://tomchentw.github.io/react-google-maps/#installation
 
 // for rendering map on screen
 const MapRenderingComponent = withScriptjs(withGoogleMap((props) =>
@@ -12,8 +18,10 @@ const MapRenderingComponent = withScriptjs(withGoogleMap((props) =>
            return  (
             <Marker key= {marker.id} position={{lat:marker.lat, lng: marker.lng}}  onClick={() => props.markerOnClick(marker)}
              animation ={ marker.isOpen ? google.maps.Animation.BOUNCE : google.maps.Animation.DROP} >
-              
+              {/*marker animations refferred from:https://developers.google.com
+                    /maps/documentation/javascript/examples/marker-animations */}
                
+               {/* Infowindow for markers */}
                 {marker.isOpen  && (
                     <InfoWindow onCloseClick={() => props.closeAllMarkers()}>
                         <div>    
@@ -33,7 +41,7 @@ class Map extends Component {
         return(
             <MapRenderingComponent
                 {...this.props}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDvjTy2Hva-KrhH-Vqeu6s3arpuckvVlWk"
+                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDvjTy2Hva-KrhH-Vqeu6s3arpuckvVlWk" 
                 loadingElement={<div style={{ height:`100%`}}/>}
                 containerElement={<div style={{ width:`100%`,height:`100%`}}/>}
                 mapElement={<div style={{height: `100%`}}/>} />
